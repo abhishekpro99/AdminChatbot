@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Document | RAG{% endblock %}
+
+{% block content %}
+<!-- DataTables CDN -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<style>
+    .section-container-uploaded {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        margin-bottom: 40px;
+        width: 90%;
+        margin-left: 20px;
+        margin-top: 50px;
+    }
+    .section-header {
+        background: #007bff;
+        color: white;
+        padding: 15px;
+        margin: -30px -30px 20px;
+        border-radius: 10px 10px 0 0;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    input[type="file"],
+    select,
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background: #1d7a35;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background: #145c27;
+    }
+
+    .document-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .document-table th,
+    .document-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .document-table th {
+        background-color: #f2f2f2;
+    }
+
+    .delete-btn {
+        background-color: #dc3545;
+        padding: 6px 10px;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .delete-btn:hover {
+        background-color: #a71d2a;
+    }
+
+    .form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+</style>
+
+<!-- History List Section -->
+<div class="section-container-uploaded">
+    <div class="section-header">Logs History</div>
+    <table  id="logTable" class="display document-table">
+        <thead>
+           <tr>
+            <th>#</th>
+            <th>User</th>
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Policy Name</th>
+            <th>Notify Admin</th>
+            <th>Created On</th>
+        </tr>
+        </thead>
+        <tbody>
+           {% for log in logs %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+        <td>
+            {% if log.user %}
+                {{ log.user.username }}
+            {% else %}
+                Anonymous
+            {% endif %}
+            </td>
+        <td>{{ log.question|truncatechars:100 }}</td>
+        <td>{{ log.answer|truncatechars:100 }}</td>
+        <td>{{ log.matched_doc_id }}</td>
+        <td>
+            {% if log.notify_admin %}
+                ✅ Yes
+            {% elif log.notify_admin == False %}
+                ❌ No
+            {% else %}
+                ⏳ Pending
+            {% endif %}
+        </td>
+        <td>{{ log.created_at|date:"Y-m-d H:i:s" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    // Check if 'deleted=1' is in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('deleted') === '1') {
+        Swal.fire({
+            icon: 'success',
+            title: 'Deleted!',
+            text: 'The document was deleted successfully.',
+            timer: 2000,
+            showConfirmButton: false
+        });
+
+        // Remove the parameter from URL without reload
+        const newUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, newUrl);
+    }
+</script>
+<script>
+  $(document).ready(function () {
+    $('#logTable').DataTable({
+      "pageLength": 10,
+      "lengthChange": false,
+      "ordering": false,
+      "language": {
+        "search": "🔍 Search:"
+      }
+    });
+  });
+</script>
+
+{% endblock %}

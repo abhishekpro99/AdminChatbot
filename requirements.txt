@@ -1,0 +1,17 @@
+--extra-index-url https://download.pytorch.org/whl/cpu/
+
+Django==4.2.7
+qdrant-client==1.6.3
+huggingface_hub==0.14.1
+# tokenizers==0.13.3
+# transformers==4.31.0
+sentence-transformers==2.2.2
+langchain==0.3.25
+llama-index==0.10.30
+llama-index-llms-gemini==0.1.7
+python-dotenv==1.0.0
+PyMuPDF==1.22.0
+openai==1.25.0
+# tiktoken==0.6.0
+torch==2.3.0+cpu
+mysqlclient==2.2.4

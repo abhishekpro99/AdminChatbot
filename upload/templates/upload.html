@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Document | RAG{% endblock %}
+
+{% block content %}
+<style>
+    .section-container, .section-container-uploaded {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        margin: 50px auto;
+        width: 95%;
+        max-width: 1100px;
+    }
+
+    .section-header {
+        background: #007bff;
+        color: white;
+        padding: 10px;
+        margin: -30px -30px 20px;
+        border-radius: 10px 10px 0 0;
+        text-align: left;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+   .form-group {
+    flex: 1 1 calc(33.33% - 20px);
+    min-width: 120px;
+    padding: 3px;
+    box-sizing: border-box;
+   }
+
+
+    .form-group.full-width {
+        flex: 1 1 100%;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+    }
+
+    input[type="file"],
+    input[type="text"],
+    input[type="date"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    textarea {
+        resize: vertical;
+         min-height: 100px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #1d7a35;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background: #145c27;
+    }
+     @media (max-width: 768px) {
+        .form-group {
+            flex: 1 1 100%;
+        }
+    }
+
+    .document-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .document-table th,
+    .document-table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .document-table th {
+        background-color: #f2f2f2;
+        font-weight: 600;
+    }
+
+    .delete-btn {
+        background-color: #dc3545;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .delete-btn:hover {
+        background-color: #a71d2a;
+    }
+
+
+    .btn-cancel {
+    padding: 12px;
+    background: #dc3545;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    width: 120px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background: #a71d2a;
+}
+
+</style>
+
+<div class="section-container">
+    <div class="section-header">Upload Your Document</div>
+   <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <!-- Row 1: Title, Document Type, Department -->
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" required>
+    </div>
+    <div class="form-group">
+        <label for="doc_type">Document Type</label>
+        <select name="doc_type" required>
+            <option value="">Select</option>
+            {% for dtype in document_types %}
+                <option value="{{ dtype.id }}">{{ dtype.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="department">Department</label>
+        <select name="department" required>
+            <option value="">Select</option>
+            <option value="Legal">Legal</option>
+            <option value="Admin">Admin</option>
+        </select>
+    </div>
+
+    <!-- Row 2: Effective Date, Expiration Date, Owner -->
+    <div class="form-group">
+        <label for="effective_date">Effective Date</label>
+        <input type="date" name="effective_date">
+    </div>
+    <div class="form-group">
+        <label for="expiration_date">Expiration Date</label>
+        <input type="date" name="expiration_date">
+    </div>
+    <div class="form-group">
+        <label for="owner">Owner</label>
+        <input type="text" name="owner">
+    </div>
+
+    <!-- Row 3: Upload File, Summary, Tags -->
+  
+    <div class="form-group">
+        <label for="tags">Tags (comma separated)</label>
+        <input type="text" name="tags">
+    </div>
+      <div class="form-group">
+        <label for="file">Upload File</label>
+        <input type="file" style="margin-top: 1px; height: 37px;" name="file" required>
+    </div>
+    
+    <div class="form-group full-width">
+        <label for="summary">Summary</label>
+        <textarea name="summary" rows="3"></textarea>
+    </div>
+
+    <!-- Buttons -->
+    <div class="form-group full-width" style="display: flex; justify-content: right; gap: 30px;">
+        <button type="button" class="btn btn-cancel" onclick="resetForm()">Cancel</button>
+        <button type="submit" style="width: 120px;">Upload</button>
+    </div>
+</form>
+
+</div>
+
+<!-- Uploaded Documents List -->
+<div class="section-container-uploaded">
+    <div class="section-header">Uploaded Documents</div>
+    <table class="document-table">
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Uploaded By</th>
+                <th>Uploaded On</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in documents %}
+            <tr>
+                <td> {% with filename=doc.file.name|slice:":30" %}
+                        {{ filename }}{% if doc.file.name|length > 30 %}...{% endif %}
+                    {% endwith %}
+                </td>
+                <td>{{ doc.title }}</td>
+                <td>{{ doc.doc_type.name }}</td>
+                <td>Uploaded</td>
+                <td>{{ doc.role }}</td>
+                <td>{{ doc.uploaded_at }}</td>
+                <td>
+                    <a href="{% url 'update_document' doc.id %}" class="btn btn-warning">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Include SweetAlert CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    // Parse the query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const updated = urlParams.get('updated');
+
+    if (updated === '1') {
+        Swal.fire({
+            title: 'Success!',
+            text: 'Document updated successfully.',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+
+        // Remove the query string to avoid repeat alerts on refresh
+        if (window.history.replaceState) {
+            const cleanUrl = window.location.origin + window.location.pathname;
+            window.history.replaceState(null, null, cleanUrl);
+        }
+    }
+</script>
+<script>
+    function resetForm() {
+        document.querySelector('form').reset();
+    }
+</script>
+
+{% endblock %}

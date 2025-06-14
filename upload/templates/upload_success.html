@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RAG Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            background: #1e2a38;
+            color: white;
+            padding: 20px 10px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 20px;
+            color: #00aced;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px;
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .sidebar a:hover {
+            background: #00aced;
+        }
+
+        /* Main content */
+        .main-content {
+            flex-grow: 1;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .upload-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            width: 400px;
+        }
+
+        .upload-box h2 {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            margin: -30px -30px 20px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #1d7a35;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #145c27;
+        }
+    </style>
+</head>
+<body class="bg-success bg-opacity-10 d-flex justify-content-center align-items-center" style="height: 100vh;">
+
+<div class="container">
+    <!-- Sidebar -->
+     {% include 'sidebar.html' %}
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="text-center p-5 bg-white shadow-lg rounded">
+        <h1 class="text-success">🎉 Document Uploaded Successfully!</h1>
+        <a href="/upload/" class="btn btn-primary mt-4">Upload Another</a>
+    </div>
+    </div>
+</div>
+
+</body>
+</html>

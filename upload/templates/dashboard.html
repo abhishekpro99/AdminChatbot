@@ -1,0 +1,26 @@
+<!-- templates/dashboard.html -->
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | RAG{% endblock %}
+
+{% block content %}
+<style>
+    .dashboard-box {
+        background: #ffffff;
+        padding: 50px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    .dashboard-box h1 {
+        font-size: 32px;
+        color: #333;
+        margin: 0;
+    }
+</style>
+
+<div class="dashboard-box">
+    <h1>Welcome to Dashboard</h1>
+</div>
+{% endblock %}
