@@ -1,5 +1,5 @@
 # Install dependencies
-echo "Installing Python dependencies..."
+# echo "Installing Python dependencies..."
 # pip install --upgrade pip
 # pip install --prefer-binary -r requirements.txt
 
