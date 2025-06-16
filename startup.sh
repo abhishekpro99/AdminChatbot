@@ -6,8 +6,8 @@ echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
 # Run database migrations (optional, safe to run every time)
-echo "Applying database migrations..."
-python manage.py migrate
+# echo "Applying database migrations..."
+# python manage.py migrate
 
 # Set Hugging Face to use cached models
 export TRANSFORMERS_CACHE=/home/site/wwwroot/.cache
