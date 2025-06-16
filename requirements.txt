@@ -12,3 +12,4 @@ PyMuPDF==1.22.0
 openai==1.25.0
 torch==2.3.0+cpu
 mysqlclient==2.2.4
+whitenoise==6.6.0

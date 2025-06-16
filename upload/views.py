@@ -306,3 +306,11 @@ def logs_history(request):
 @login_required
 def upload_success(request):
     return render(request, 'upload_success.html')
+
+
+
+# upload/views.py
+from django.http import HttpResponse
+
+def health_check(request):
+    return HttpResponse("App is up.")
