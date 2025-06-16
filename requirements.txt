@@ -1,7 +1,7 @@
 --extra-index-url https://download.pytorch.org/whl/cpu/
 
 Django==4.2.7
-qdrant-client==1.6.3
+qdrant-client==1.14.2
 huggingface_hub==0.14.1
 # tokenizers==0.13.3
 # transformers==4.31.0

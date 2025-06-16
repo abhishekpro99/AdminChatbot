@@ -1,4 +1,4 @@
-# llama_setup.py
+# upload/llama_setup.py
 
 import os
 from dotenv import load_dotenv
