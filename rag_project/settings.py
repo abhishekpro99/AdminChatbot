@@ -11,20 +11,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-c57%(e1cp3(8c7m^-7gq&+fxp^
 
 DEBUG = False
 
-<<<<<<< HEAD
 ALLOWED_HOSTS = ['*']  # Update this in production
-=======
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c57%(e1cp3(8c7m^-7gq&+fxp^0m9aki82w@g_c@=zrst9w4@d'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = []
-
-
-# Application definition
->>>>>>> 4a48f0c29c01062bda83d8d612d06e3741cff7b2
 
 INSTALLED_APPS = [
     'django.contrib.admin',
