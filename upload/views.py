@@ -31,7 +31,8 @@ from llama_index.core.llms import ChatMessage
 load_dotenv()
 
 # Sentence Transformer model
-model = SentenceTransformer("BAAI/bge-small-en-v1.5")
+model = SentenceTransformer("BAAI/bge-small-en-v1.5", cache_folder="/tmp/huggingface_cache")
+
 
 # Qdrant setup
 collection_name = "documents"
