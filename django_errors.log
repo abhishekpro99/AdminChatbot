@@ -183,3 +183,237 @@ You're accessing the development server over HTTPS, but it only supports HTTP.
 You're accessing the development server over HTTPS, but it only supports HTTP.
 You're accessing the development server over HTTPS, but it only supports HTTP.
 You're accessing the development server over HTTPS, but it only supports HTTP.
+Internal Server Error: /auth/complete/azuread-oauth2/
+Traceback (most recent call last):
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_django\utils.py", line 43, in wrapper
+    return func(request, backend, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_django\views.py", line 31, in complete
+    return do_complete(
+           ^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\actions.py", line 50, in do_complete
+    user = backend.complete(user=user, redirect_name=redirect_name, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 46, in complete
+    return self.auth_complete(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\utils.py", line 235, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\oauth.py", line 450, in auth_complete
+    return self.do_auth(
+           ^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\utils.py", line 235, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\oauth.py", line 463, in do_auth
+    return self.strategy.authenticate(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_django\strategy.py", line 104, in authenticate
+    return authenticate(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\views\decorators\debug.py", line 42, in sensitive_variables_wrapper
+    return func(*func_args, **func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 77, in authenticate
+    user = backend.authenticate(request, **credentials)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 89, in authenticate
+    return self.pipeline(pipeline, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 92, in pipeline
+    out = self.run_pipeline(pipeline, pipeline_index, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 123, in run_pipeline
+    func = module_member(name)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\utils.py", line 36, in module_member
+    return getattr(module, member)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'upload.pipeline' has no attribute 'save_token_info'
+"GET /auth/complete/azuread-oauth2/?code=1.ASoA_vITLpeh3Um4ECtbAjUzUDzwbF7s3sJHqmcD5_2vCYsAAAAqAA.AgABBAIAAABVrSpeuWamRam2jAF1XRQEAwDs_wUA9P_kcwv-MaORBVqmJ6WaRGAzRiSMFKSAHyfDlDva4diu40fy7wpetnVuqQ8Tt4fnXlSWG7tFiRDJKekeMhSwxZm69pcsXcxErDjSzFTZtw07F4N0ZnPWbzPFGgHJ70jDBTutgpGr4OfBIUMBTElE88BjAPvIZcjLO3TOs1btLQuCxY4WK2tQoCka1yrJ0aPWvX5IK4f5eMiY5LHMQMV3wsSt_v3UF9sfQS0b7i52dhBFFJ3WWeDhjO0eRGi-p5254kdY2U6xn7E6z8DNkf_QRUZgpb8B7bZUJSD8_CbuWCS9g-psVGDbpftmVt-bNIipvJ5t2UpkreYffuMywi3ny_BYexTZcdbBZzdDjK-1Uf2hkINaY6fFjOmjJQQACNrPprJhtPYiqQWTowr8onQBlMwd8JaNb6WWt1DBW2SUo_bgdWsV97ryCY3VmfLBvcwg9iq_yzY7UjuBEzRlrm9hxYYB7QD-Ay0roGi9ViJvB4xLUistRmOAaVemTEjgkuIr0YOwAyCelAUzeZ6cV9RfzMT-SIO1XDrzdNstt8csPTvtABarPteya_W6Z26jVdwdAP_yIEDnN2sWwWiAKhxR9Hsj5VXniJpnzCsyCxOCCz0zvWXRIwRwfs3hoJzOMMLMbJ9vTLA-T3KegKBEkpkdune4M4KwUTxobmjsOZlM2pP94PVBAYZmI7s&state=Xrin2pBGQCNBjSzQnXKq5xg8XnGyLLA9&session_state=005e2d79-3392-e0f9-a26b-fc9263b582de HTTP/1.1" 500 145
+Internal Server Error: /auth/complete/azuread-oauth2/
+Traceback (most recent call last):
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_django\utils.py", line 43, in wrapper
+    return func(request, backend, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_django\views.py", line 31, in complete
+    return do_complete(
+           ^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\actions.py", line 50, in do_complete
+    user = backend.complete(user=user, redirect_name=redirect_name, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 46, in complete
+    return self.auth_complete(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\utils.py", line 235, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\oauth.py", line 450, in auth_complete
+    return self.do_auth(
+           ^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\utils.py", line 235, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\oauth.py", line 463, in do_auth
+    return self.strategy.authenticate(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_django\strategy.py", line 104, in authenticate
+    return authenticate(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\views\decorators\debug.py", line 42, in sensitive_variables_wrapper
+    return func(*func_args, **func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 77, in authenticate
+    user = backend.authenticate(request, **credentials)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 89, in authenticate
+    return self.pipeline(pipeline, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 92, in pipeline
+    out = self.run_pipeline(pipeline, pipeline_index, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 123, in run_pipeline
+    func = module_member(name)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\utils.py", line 36, in module_member
+    return getattr(module, member)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'upload.pipeline' has no attribute 'save_token_info'
+"GET /auth/complete/azuread-oauth2/?code=1.ASoA_vITLpeh3Um4ECtbAjUzUDzwbF7s3sJHqmcD5_2vCYsAAAAqAA.AgABBAIAAABVrSpeuWamRam2jAF1XRQEAwDs_wUA9P-q_E4erIxtFVuFCxb7Ef1bJimZxqkQdctedhHrKgAG2i_FasT7rds4CVQNm79c4Klc03_gwBZGKOUNSa6Ui45O9oLdZP4RX2KrjKaXm4kAXAU6y6T1E5VdzlnZxDQv_Jbr_dQSHtJIuCqZRvkUHVH5b0zgLFt0RDYuVltZntTnKt10VdskXiEgoE_Gz7B1HOafr23cYxEvpMtF4mKN6Wwt_b1NsAMiyKJpdID-iE1PFAOjhzWCifiB3rT-6uajh2btpR12noxnqb7SAMLv_DE6N8jwjNjPEuRxi1XD45MWkhCYOsN7qBUzpR4e76pW2QjqPywwKSNFypNU_RzrQ-B8a4CnznroOT8inRWYyD7f5ySP5Otgv63298BoVRJ5Upoh0O3onU1_YfygXdDGTmHlVOOnN2e47CBAu9tunoZwFz53EBjd5j6IiaHynTf8RtBBXfJf7sxyiih7QDkIcgLZi-irRzk0-3p5-LFUbvqi3-8H632LMJCdi3RXUnUWP5xZVW37No3xHiDZA84ozghH0kb-oAf-McUaC2FJtqXuRx-1-C1QM0sUN30MyOXMknrKRoyq8PvTrz0HaZPiUKcu8suFyCeYNa-VLi4GDqY-HmsH7sXqRVYaH6qu6Yu4rAL9Qr5lizIHiUIEE2HcF3NzMG_BL_KJAc9uuUCx76zxyO3vnA&state=atQCPTGwjesslebrGv8aQwXV34UCGYtq&session_state=005e2d79-a1ca-d616-d8e9-17aef3c078b1 HTTP/1.1" 500 145
+Internal Server Error: /auth/complete/azuread-oauth2/
+Traceback (most recent call last):
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\utils.py", line 235, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\oauth.py", line 441, in auth_complete
+    response = self.request_access_token(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\oauth.py", line 418, in request_access_token
+    return self.get_json(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 286, in get_json
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 274, in request
+    response.raise_for_status()
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://login.microsoftonline.com/common/oauth2/token
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_django\utils.py", line 43, in wrapper
+    return func(request, backend, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_django\views.py", line 31, in complete
+    return do_complete(
+           ^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\actions.py", line 50, in do_complete
+    user = backend.complete(user=user, redirect_name=redirect_name, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 46, in complete
+    return self.auth_complete(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\utils.py", line 244, in wrapper
+    raise AuthCanceled(args[0], response=err.response)
+social_core.exceptions.AuthCanceled: Authentication process canceled
+"GET /auth/complete/azuread-oauth2/?code=1.ASoA_vITLpeh3Um4ECtbAjUzUDzwbF7s3sJHqmcD5_2vCYsAAAAqAA.AgABBAIAAABVrSpeuWamRam2jAF1XRQEAwDs_wUA9P-q_E4erIxtFVuFCxb7Ef1bJimZxqkQdctedhHrKgAG2i_FasT7rds4CVQNm79c4Klc03_gwBZGKOUNSa6Ui45O9oLdZP4RX2KrjKaXm4kAXAU6y6T1E5VdzlnZxDQv_Jbr_dQSHtJIuCqZRvkUHVH5b0zgLFt0RDYuVltZntTnKt10VdskXiEgoE_Gz7B1HOafr23cYxEvpMtF4mKN6Wwt_b1NsAMiyKJpdID-iE1PFAOjhzWCifiB3rT-6uajh2btpR12noxnqb7SAMLv_DE6N8jwjNjPEuRxi1XD45MWkhCYOsN7qBUzpR4e76pW2QjqPywwKSNFypNU_RzrQ-B8a4CnznroOT8inRWYyD7f5ySP5Otgv63298BoVRJ5Upoh0O3onU1_YfygXdDGTmHlVOOnN2e47CBAu9tunoZwFz53EBjd5j6IiaHynTf8RtBBXfJf7sxyiih7QDkIcgLZi-irRzk0-3p5-LFUbvqi3-8H632LMJCdi3RXUnUWP5xZVW37No3xHiDZA84ozghH0kb-oAf-McUaC2FJtqXuRx-1-C1QM0sUN30MyOXMknrKRoyq8PvTrz0HaZPiUKcu8suFyCeYNa-VLi4GDqY-HmsH7sXqRVYaH6qu6Yu4rAL9Qr5lizIHiUIEE2HcF3NzMG_BL_KJAc9uuUCx76zxyO3vnA&state=atQCPTGwjesslebrGv8aQwXV34UCGYtq&session_state=005e2d79-a1ca-d616-d8e9-17aef3c078b1 HTTP/1.1" 500 145
+Internal Server Error: /auth/complete/azuread-oauth2/
+Traceback (most recent call last):
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_django\utils.py", line 43, in wrapper
+    return func(request, backend, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_django\views.py", line 31, in complete
+    return do_complete(
+           ^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\actions.py", line 50, in do_complete
+    user = backend.complete(user=user, redirect_name=redirect_name, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 46, in complete
+    return self.auth_complete(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\utils.py", line 235, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\oauth.py", line 450, in auth_complete
+    return self.do_auth(
+           ^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\utils.py", line 235, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\oauth.py", line 463, in do_auth
+    return self.strategy.authenticate(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_django\strategy.py", line 104, in authenticate
+    return authenticate(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\views\decorators\debug.py", line 42, in sensitive_variables_wrapper
+    return func(*func_args, **func_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 77, in authenticate
+    user = backend.authenticate(request, **credentials)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 89, in authenticate
+    return self.pipeline(pipeline, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 92, in pipeline
+    out = self.run_pipeline(pipeline, pipeline_index, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\backends\base.py", line 123, in run_pipeline
+    func = module_member(name)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abhis\OneDrive\Desktop\AdminBott\venv\Lib\site-packages\social_core\utils.py", line 36, in module_member
+    return getattr(module, member)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'upload.pipeline' has no attribute 'save_token_info'
+"GET /auth/complete/azuread-oauth2/?code=1.ASoA_vITLpeh3Um4ECtbAjUzUDzwbF7s3sJHqmcD5_2vCYsAAAAqAA.AgABBAIAAABVrSpeuWamRam2jAF1XRQEAwDs_wUA9P-h65AaJ9o6NPDGh-ldeBLKkNWE2oUsx1LKRayD6CEwbnXvEb71KAefT0TQawcPyCSORz2e2Qaqf9wMZFulLJCvZXByGZwJId_smcpS1xHB3QKoFT5xFwGfVWKQCS7sSiu7H-gTmOzCK14s3Brxr5YLhd9m7MzgAq6qQNq4xPymK5uVCIQN3jR9XaiIq1ImmZaxsZhAQAVSPNjGTOAsxLvwkOtFwFmWv_IylDsmiN3oqcEvzwaOc7uoUqVoksf9fCRQgWHJEwRuybWanlTHBUBtfl3pD6O0gi42AjaVwxQiMxRQzD6H_ueUC1LR5Hu1Nz0gn1f4PSZVLoqx1trFci10X_dSFBe2mnVHfAfDa01duaJ_vFOuxRxLheUdUyP_xwVEZ6SU3kyu6pMuf5D69zAhDQmlLbfLOcR5UI0Z9LSc4anO0-p2YtpALK5-ThqT_hcmLENJb4F0DrZGzztadx7y2eIN30oufWphqXUrrD5Qt0vToM5K3JBdifhfgusUlJFJJx-I8FmnKU6Rh6rrt_CWWtWpUGIapiELnpbO670rPSaN2giGmegvV_p8F7UnRFQjxEO6cQ4afwRaOUeNBsJt-PgjfRXIoKgBQG3hwHEN_G4ljxjrxHaTU8KnP80N1p9fqMRVi9qjhAsA2jRIZjR9bAxfHkoropN4vzaA6O4D4qaLtIualg&state=KHXTIG03OeMqwSAPP8EN9ue7xgCPICnR&session_state=005e2d79-ed24-9951-1022-6a7c64c59414 HTTP/1.1" 500 145
